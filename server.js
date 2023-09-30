@@ -9,6 +9,7 @@ const cors = require('cors');
 // define all routes
 const memberRoute = require('./routes/member.route');
 const bookRoute = require('./routes/book.route');
+const borrowRoute = require('./routes/borrow.route');
 
 // open CORS policy
 app.use(cors());
@@ -17,6 +18,7 @@ app.use('/member', memberRoute);
 app.use('/book', bookRoute);
 // route to access uploaded file
 app.use(express.static(__dirname));
+app.use('/borrow', bookRoute);
 
 // run server based on defined port
 app.listen(PORT, () => {
