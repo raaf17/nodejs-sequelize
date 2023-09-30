@@ -8,11 +8,15 @@ const PORT = 3000;
 const cors = require('cors');
 // define all routes
 const memberRoute = require('./routes/member.route');
+const bookRoute = require('./routes/book.route');
 
 // open CORS policy
 app.use(cors());
 // define prefix for each route
-app.use('/member', memberRoute)
+app.use('/member', memberRoute);
+app.use('/book', bookRoute);
+// route to access uploaded file
+app.use(express.static(__dirname));
 
 // run server based on defined port
 app.listen(PORT, () => {
