@@ -10,10 +10,12 @@ const cors = require('cors');
 const memberRoute = require('./routes/member.route');
 const bookRoute = require('./routes/book.route');
 const borrowRoute = require('./routes/borrow.route');
+const auth = require('./routes/auth.route');
 
 // open CORS policy
 app.use(cors());
 // define prefix for each route
+app.use('/auth', auth);
 app.use('/member', memberRoute);
 app.use('/book', bookRoute);
 // route to access uploaded file

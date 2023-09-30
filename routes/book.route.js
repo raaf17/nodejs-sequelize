@@ -4,12 +4,14 @@ const express = require('express');
 const app = express();
 //load book's controller
 const bookController = require('../controllers/book.controller');
+// load function from simple-middleware
+const { midOne } = require('../middlewares/simple-middleware');
 
 // allow to read 'request' with json type
 app.use(express.json());
 
 // create route to get data with method 'GET'
-app.get('/', bookController.getAllBooks);
+app.get('/', [midOne], bookController.getAllBooks);
 // create route to find book using method 'POST' and 'find'
 app.post('/find', bookController.findBook);
 // create route to add new book using method 'POST'
